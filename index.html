@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>A bit about git - brought to you by KD</title>
+
+        <meta name="description" content="Presentation notes for git presentation about git">
+        <meta name="author" content="KD">
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+        <!-- base theme -->
+        <link rel="stylesheet" href="node_modules/reveal.js/css/reveal.css">
+        <link rel="stylesheet" href="res/css/custom.css">
+
+        <!-- theme switch, only one may be active! -->
+        <!--<link rel="stylesheet" href="node_modules/reveal.js/css/theme/black.css" id="theme">-->
+        <!--<link rel="stylesheet" href="node_modules/reveal.js/css/theme/white.css" id="theme">-->
+        <!--<link rel="stylesheet" href="node_modules/reveal.js/css/theme/league.css" id="theme">-->
+        <!--<link rel="stylesheet" href="node_modules/reveal.js/css/theme/sky.css" id="theme">-->
+        <!--<link rel="stylesheet" href="node_modules/reveal.js/css/theme/beige.css" id="theme">-->
+        <!--<link rel="stylesheet" href="node_modules/reveal.js/css/theme/simple.css" id="theme">-->
+        <!--<link rel="stylesheet" href="node_modules/reveal.js/css/theme/serif.css" id="theme">-->
+        <link rel="stylesheet" href="node_modules/reveal.js/css/theme/night.css" id="theme">
+        <!--<link rel="stylesheet" href="node_modules/reveal.js/css/theme/moon.css" id="theme">-->
+        <!--<link rel="stylesheet" href="node_modules/reveal.js/css/theme/solarized.css" id="theme">-->
+
+        <!-- Code syntax highlighting -->
+        <link rel="stylesheet" href="node_modules/reveal.js/lib/css/zenburn.css">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? 'node_modules/reveal.js/css/print/pdf.css' : 'node_modules/reveal.js/css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+
+        <div class="reveal">
+
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+                <section id="themes">
+                    <h2>Theme adjustment if need be</h2>
+                    <p>
+                        <!-- Hacks to swap themes after the page has loaded. Not flexible and only intended for the reveal.js demo deck. -->
+                        <a href="#" onclick="document.getElementById('theme').setAttribute('href','node_modules/reveal.js/css/theme/black.css'); return false;">Black</a> -
+                        <a href="#" onclick="document.getElementById('theme').setAttribute('href','node_modules/reveal.js/css/theme/white.css'); return false;">White</a> -
+                        <a href="#" onclick="document.getElementById('theme').setAttribute('href','node_modules/reveal.js/css/theme/league.css'); return false;">League</a> -
+                        <a href="#" onclick="document.getElementById('theme').setAttribute('href','node_modules/reveal.js/css/theme/sky.css'); return false;">Sky</a> -
+                        <a href="#" onclick="document.getElementById('theme').setAttribute('href','node_modules/reveal.js/css/theme/beige.css'); return false;">Beige</a> -
+                        <a href="#" onclick="document.getElementById('theme').setAttribute('href','node_modules/reveal.js/css/theme/simple.css'); return false;">Simple</a> <br>
+                        <a href="#" onclick="document.getElementById('theme').setAttribute('href','node_modules/reveal.js/css/theme/serif.css'); return false;">Serif</a> -
+                        <a href="#" onclick="document.getElementById('theme').setAttribute('href','node_modules/reveal.js/css/theme/night.css'); return false;">Night</a> -
+                        <a href="#" onclick="document.getElementById('theme').setAttribute('href','node_modules/reveal.js/css/theme/moon.css'); return false;">Moon</a> -
+                        <a href="#" onclick="document.getElementById('theme').setAttribute('href','node_modules/reveal.js/css/theme/solarized.css'); return false;">Solarized</a>
+                    </p>
+                </section>
+
+                <section>
+                    <section id="start">
+                        <h1>A bit about git</h1>
+
+                        <p class="right">
+                            <small>from KD with love</small>
+                        </p>
+                    </section>
+                    <!--<section>-->
+                        <!--<p>-->
+                            <!--Please navigate to:<br>-->
+                            <!--<a target="_blank" href="https://sli.do/#gitbits">sli.do/#gitbits</a>-->
+                        <!--</p>-->
+                    <!--</section>-->
+                </section>
+
+                <section>
+                    <section id="env">
+                        <h2>Environment equality</h2>
+                        <p>
+                            git ~ gitk ~ git-sh ~ cli vs client
+                        </p>
+                    </section>
+                    <section>
+                        <h2>Availability table</h2>
+
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>tool</th>
+                                <th>win</th>
+                                <th>linux</th>
+                                <th>mac</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>git</td>
+                                <td>x</td>
+                                <td>x</td>
+                                <td>x</td>
+                            <tr>
+                            <tr>
+                                <td>gitk</td>
+                                <td>x</td>
+                                <td>x</td>
+                                <td>x*</td>
+                            <tr>
+                            <tr>
+                                <td>git-sh</td>
+                                <td>-*</td>
+                                <td>x</td>
+                                <td>x**</td>
+                            <tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    <section>
+                        <h2>git-sh on win</h2>
+                        <p><strong>
+                            Big shout-out to Filip R. for .bat port!
+                        </strong></p>
+                        <p class="left">
+                            prerequisites: installed git
+                        </p>
+                        <p class="left">
+                            How to use:<br>
+                            - save <a href="res/misc/git-sh.bat" download="git-sh.bat">git-sh.bat</a> to any location<br>
+                            - run it
+                        </p>
+                    </section>
+                    <section>
+                        <h2>Inline pretty log graph</h2>
+                        <p class="left">
+                            $git config --global -e<br>
+                            paste in following code snippet:
+                        </p>
+                        <pre><code data-trim>
+[alias]
+    lg = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
+    lgn = !"git lg -n"
+    lga = !"git lg --all"
+    lgan = !"git lg --all -n"
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h2>CLI vs client</h2>
+                        <table>
+                            <thead>
+                            <tr>
+                                <th>feat</th>
+                                <th>cli</th>
+                                <th>client</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>amount of</td>
+                                <td>1</td>
+                                <td>maaany</td>
+                            <tr>
+                            <tr>
+                                <td>flexibility</td>
+                                <td>+++</td>
+                                <td>+~</td>
+                            <tr>
+                            <tr>
+                                <td>transparency</td>
+                                <td>+++</td>
+                                <td>+~</td>
+                            <tr>
+                            <tr>
+                                <td>information at once</td>
+                                <td>+</td>
+                                <td>+++</td>
+                            <tr>
+                            </tbody>
+                        </table><br>
+                        <p class="fragment left">
+                            at the end use whatever, but know basic cli!
+                        </p>
+                    </section>
+                </section>
+
+                <section>
+                    <section id="story">
+                        <h2>A bit of backstory</h2>
+                        <p>
+                            git pointer ~ commits and branches ~ local vs remote
+                        </p>
+                    </section>
+                    <section>
+                        <h2>What is a git pointer</h2>
+                        <img data-src="https://git-scm.herokuapp.com/figures/18333fig0308-tn.png" alt="gitk --all in a repo">
+                        <p class="fragment left">
+                            git pointer is: SHA-1, branch, tag<br>
+                            <span class="fragment">...and it may also be defined as relative!</span>
+                        </p>
+                    </section>
+                    <section>
+                        <h2>Then, what is a branch</h2>
+                        <p class="fragment left">
+                            Branch is nothing more than a simplest git <b>POINTER</b>
+                        </p>
+                        <p class="fragment left">
+                            Commits are <b>JUST</b> a linked list
+                        </p>
+                        <p class="fragment left">
+                            All else is: <b>our aesthetical interpretation</b> of git graph.<br>
+                            <span class="fragment">...including lost (aka dangling) commits</span>
+                        </p>
+                        <p class="fragment right">
+                            <small>gitk demo here</small>
+                        </p>
+                    </section>
+                    <section>
+                        <h2>Local vs remote</h2>
+                        <p class="fragment left">
+                            in LOCAL repo:&nbsp;&nbsp;&nbsp;play or mess up == fun !
+                        </p>
+                        <p class="fragment left">
+                            in REMOTE repo:&nbsp;&nbsp;&nbsp;play or mess up == <b>instant pain</b> !
+                        </p>
+                        <p class="fragment left">
+                            however, git is distributed, and we can fix it
+                        </p>
+                    </section>
+                </section>
+
+                <section>
+                    <section id="dosdonts">
+                        <h2>Dos and don'ts</h2>
+                        <p>
+                            please do ~vs~ please do not
+                        </p>
+                    </section>
+                    <section data-background="#1C7849" data-background-transition="zoom">
+                        <h2>Do</h2>
+                        <p class="fragment left">
+                            use <a target="_blank" target="_blank" class="highlight-red" href="http://www.gitignore.io/">gitignore.io</a>
+                        </p>
+                        <p class="fragment left">
+                            have a clean working directory before doing anything else
+                        </p>
+                        <p class="fragment left">
+                            branch out, play with <b>local</b> repo<br>
+                        </p>
+                        <p class="fragment left">
+                            Think <b>twice</b> before pushing
+                        </p>
+                        <p class="fragment left">
+                            <b>Be aware of the repo and communicate!</b>
+                        </p>
+                    </section>
+
+                    <section data-background="#B64227" data-background-transition="zoom">
+                        <h2>Do not</h2>
+                        <p class="fragment right">
+                            ...panic
+                        </p>
+                    </section>
+                    <section>
+                        <p>"please don't" reminder</p>
+                        <p class="fragment left">
+                            <span>do NOT put generated code into repo</span><br>
+                            <span>do NOT put binaries into repo</span><br>
+                            <span>do NOT put personal IDE setup into repo</span><br>
+                            <span>do not put credentials into repo</span><br>
+                        </p>
+                        <p class="fragment left">
+                            <b><span>DO NOT GIT PUSH --FORCE</span></b><br>
+                            <b><span>DO NOT GIT COMMIT --AMEND remote commits</span></b><br>
+                            <b><span>DO NOT GIT REBASE remote commits</span></b><br>
+                            <b><span>DO NOT GIT PUSH --ALL</span></b><br>
+                        </p>
+                        <p class="fragment left">
+                            ...basically do not destroy or otherwise alter remote history.
+                        </p>
+                    </section>
+                </section>
+
+                <section>
+                    <section id="conflicts">
+                        <h2>Conflict safety net</h2>
+                        <p>
+                            looks ~ tools ~ reset
+                        </p>
+                    </section>
+                    <section>
+                        <h2>Conflict looks like</h2>
+                        <pre><code class="diff" data-trim>
+Bio jednom jedan zmaj
+
+<<<<<<< CURRENT BRANCH CONTENT
+A onda dosli seljani
+i roknuse zmaja :)
+
+@author KD
+=======
+I onda je zmaj sreo macu
+i bili su najboljii drugari
+>>>>>>> CHANGE WE TRY TO ADD TO IT
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h3>Merge conflict</h3>
+                        <pre class="fragment"><code data-trim>
+                            $git merge --abort
+                        </code></pre>
+                        <h3>Rebase conflict</h3>
+                        <pre class="fragment"><code data-trim>
+                            $git rebase --abort
+                        </code></pre>
+                        <h3>Universal* remedy</h3>
+                        <pre class="fragment"><code data-trim>
+                            $git reset --hard
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <section id="mr">
+                        <h2>A bit about merge and rebase</h2>
+                            safe rebase ~ when to merge vs rebase
+                    </section>
+                    <section>
+                        <h2>Lossless rebase 1/2</h2>
+                        <pre><code data-trim>
+kd@feature$ git branch -f last_rebase
+kd@feature$ git rebase master
+# if I messed up
+kd@feature$ git reset --hard last_rebase
+# profit?
+                        </code></pre>
+                        <p>or</p>
+                        <pre><code data-trim>
+kd@feature$ git checkout -b rebase_temp
+kd@rebase_temp$ git rebase master
+# if I messed up
+kd@rebase_temp$ git checkout feature
+kd@feature$ git branch -D rebase_temp
+# profit?
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h2>Lossless rebase 2/2</h2>
+                        <p class="fragment left">
+                            its not breaking the rebase process that gets you<br>(detached HEAD state)
+                        </p>
+                        <p class="fragment left">
+                            it is forcing it to to the end in undesirable state!
+                        </p>
+                    </section>
+                    <section>
+                        <h2>When to merge vs rebase</h2>
+                        <p class="fragment left">
+                            please do <i>$git pull --rebase origin</i> for minor fixes
+                        </p>
+                        <p class="fragment left">
+                            always merge in feature branches
+                        </p>
+                        <p class="fragment left">
+                            <b>always</b> merge if rebase would alter remote history!
+                        </p>
+                    </section>
+                </section>
+
+                <section id="res">
+                    <h2>Resources</h2>
+                    <p class="left">
+                        <a target="_blank" href="http://pcottle.github.io/learnGitBranching/">Interactive tutorial</a><br>
+                        <a target="_blank" href="http://ndpsoftware.com/git-cheatsheet.html#loc=workspace;">Interactive cheat-sheet</a><br>
+                        <a target="_blank" href="http://nvie.com/posts/a-successful-git-branching-model/">Branching model</a><br>
+                        <br>
+                        <a target="_blank" href="http://gitignore.io/">gitignore.io</a><br>
+                        <a target="_blank" href="https://github.com/rtomayko/git-sh/">git-sh</a><br>
+                        <br>
+                        <a target="_blank" href="https://sites.google.com/site/brankoupomoc/programiranje/git/tuts">verbose tuts</a><br>
+                        <a target="_blank" href="https://git-scm.herokuapp.com/doc">documentation</a>
+                    </p>
+                </section>
+
+                <section>
+                    <section id="end">
+                        <h1>QA</h1>
+                    </section>
+                    <section>
+                        <h1>TY</h1>
+                        <img data-src="http://www.gifwave.com/media/846799/love-swag-like-a-boss-macklemore-fucking-fur-coat.gif"
+                             alt="#SWAAAG \o/">
+                    </section>
+                </section>
+
+            </div>
+        </div>
+
+        <script src="node_modules/reveal.js/lib/js/head.min.js"></script>
+        <script src="node_modules/reveal.js/js/reveal.js"></script>
+
+        <script>
+
+            // Full list of configuration options available at:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+
+                transition: 'convex', // none/fade/slide/convex/concave/zoom
+
+                // Optional reveal.js plugins
+                dependencies: [
+                    { src: 'node_modules/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'node_modules/reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'node_modules/reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'node_modules/reveal.js/plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'node_modules/reveal.js/plugin/zoom-js/zoom.js', async: true },
+                    { src: 'node_modules/reveal.js/plugin/notes/notes.js', async: true }
+                ]
+            });
+
+        </script>
+
+    </body>
+</html>

@@ -1,0 +1,23 @@
+{
+  "name": "kdsgit",
+  "description": "Bits about git presented by KD",
+  "version": "0.0.1",
+  "scripts": {
+    "test": "",
+    "start": "http-server -p 8080 -o"
+  },
+  "author": {
+    "name": "Branko Bavrljic",
+    "email": "kobran.darthen+gitpress@gmail.com"
+  },
+  "dependencies": {
+    "reveal.js": "^3.0.0",
+    "http-server": "^0.8.0"
+  },
+  "licenses": [
+    {
+      "type": "CC",
+      "url": "{{toBeAdded}}"
+    }
+  ]
+}
